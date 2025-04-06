@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lecteur audio</title>
+  <style>
+    body {
+      background: rgba(0, 0, 255, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .audio-div {
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width:800px;
+      height:auto;
+      border-radius: 3rem;
+      padding:30px;
+      
+      
+    }
+
+    .btn-container {
+      display: flex;
+      gap:80px;
+      margin-top:100%;
+      width:100%;
+      background:rgba(0,0,255,0.5);
+      padding:20px;
+      border-radius:3em;
+    }
+
+    button {
+      min-width: 200px;
+      height: 70px;
+      border-radius: 2rem;
+      cursor: pointer;
+      border: none;
+      background: rgba(0, 255, 0, 0.8);
+      color: #fff;
+      font-weight: bold;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+      
+    }
+    button:hover{
+      transition: all 0.3 ease;
+      background:moccasin;
+    }
+    .color{
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      width:300px;
+      height:300px;
+      border-radius:50%;
+      animation-name: audio;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      margin-top:40%;
+      filter:  drop-shadow(25px 25px 25px  #fff)   ;
+      animation-play-state: paused;
+    }
+    @keyframes audio{
+      0%{transform: scale(1); background: red;}
+      50%{transform: scale(1.4);background:violet;}
+      75%{transform: scale(1);background: blue;}
+      100%{transform: scale(1.4);background: lawngreen;}
+      
+    }
+    #musique{
+      background:rgba(255,0,0,0.5);
+      padding:30px;
+      width:100%;
+      height:70px;
+      border-radius:3rem;
+      
+    }
+  </style>
+</head>
+<body>
+  <div class="audio-div">
+    <audio src="https://files.catbox.moe/2vgkwr.mp3" id="musique" controls></audio>
+    <div class="color">
+      
+    </div>
+    
+    
+    
+    
+    
+    
+    <div class="btn-container">
+      <button onclick="play()">Play</button>
+      <button onclick="pause()">Pause</button>
+      <button onclick="changeTrack()">changer</button>
+    </div>
+  </div>
+
+  <script>
+    const audio = document.getElementById('musique');
+const colorBox = document.querySelector('.color');
+const tracks = [
+  "https://files.catbox.moe/qesada.mp3",
+  "https://files.catbox.moe/2vgkwr.mp3",
+  "https://files.catbox.moe/7v0nxd.mp3"
+];
+
+function play() {
+  audio.play();
+  colorBox.style.animationPlayState = "running";
+}
+
+function pause() {
+  audio.pause();
+  colorBox.style.animationPlayState = "paused";
+}
+
+function changeTrack() {
+  const aleatoire = tracks[Math.floor(Math.random() * tracks.length)];
+  audio.src = aleatoire;
+  
+    audio.play();
+  
+
+  colorBox.style.animationPlayState = "running";
+};
+
+  
+  confirm("Écouter de la musique Phonk, pour, ce distraire ☘️🎉💯");
+  </script>
+</body>
+</html>
